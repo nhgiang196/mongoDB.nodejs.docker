@@ -8,8 +8,8 @@ services:
       dockerfile: ./docker/Dockerfile
     ports:
       - 3000:3000
-    volumes:
-      - .:/app
+    # volumes:
+    #   - .:/app
     command: yarn dev
     networks:
       - common
@@ -23,20 +23,21 @@ services:
     image: mongo
     ports:
       - 27017:27017
-    volumes:
-      - ./data:/data/db
+    # volumes:
+    #   - ./data:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pass        
+      MONGO_INITDB_ROOT_PASSWORD: pass      
     networks:
       - common
 
   mongo-ui:
+    restart: always
     image: mongo-express
     depends_on:
       - mongo
     environment:
-      ME_CONFIG_OPTIONS_EDITORTHEME: "ambiance"
+      ME_CONFIG_OPTIONS_EDITORTHEME: ambiance
       ME_CONFIG_MONGODB_ADMINUSERNAME: admin
       ME_CONFIG_MONGODB_ADMINPASSWORD: pass
     ports:
