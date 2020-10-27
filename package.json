@@ -4,8 +4,10 @@
   "main": "src/index.js",
   "author": "giang.nh@becamex.com.vn",
   "license": "MIT",
-  "scripts": {"start": "node src/index.js",
-  "dev":"nodemon src/index.js"},
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.10.11"
