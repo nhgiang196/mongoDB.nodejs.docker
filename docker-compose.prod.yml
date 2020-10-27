@@ -6,11 +6,11 @@ services:
     build:
       context: .
       dockerfile: ./docker/Dockerfile
-    ports:
-      - 3000:300
-    volumes:
-      - .:/app
-    command: yarn dev
+    # ports:
+    #   - 3000:3000
+    # volumes:
+    #   - .:/app
+    # command: yarn start
     networks:
       - common
     environment:
@@ -26,6 +26,15 @@ services:
       - ./data:/data/db
     networks:
       - common
+  nginx:
+    container_name: nginx
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/conf.d/:/etc/nginx/conf.d
+    networks:
+      - common 
 
 networks:
   common:
