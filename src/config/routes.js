@@ -4,32 +4,31 @@ var mongodb = require('./db');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res) {
-  res.json({ data: 'Hello Docker' })
-  // mongodb.getVal(res);
+router.get('/', function (req, res) {
+  // res.json({ data: 'Hello Docker' })
+  mongodb.getVal(res);
 });
 
-router.post('/values', function(req, res) {
+router.post('/values', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   var val = req.body.value;
-
   if (val === undefined || val === "") {
-    res.send(JSON.stringify({status: "error", value: "Value undefined"}));
-    return 
+    res.send(JSON.stringify({ status: "error", value: "Value undefined" }));
+    return
   }
   mongodb.sendVal(val, res);
 });
 
-router.delete('/values/:id', function(req, res) {
+router.delete('/values/?id=:id', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   var uuid = req.params.id;
 
   if (uuid === undefined || uuid === "") {
-    res.send(JSON.stringify({status: "error", value: "UUID undefined"}));
+    res.send(JSON.stringify({ status: "error", value: "UUID undefined" }));
     return
   }
   mongodb.delVal(uuid);
-  res.send(JSON.stringify({status: "ok", value: uuid}));
+  res.send(JSON.stringify({ status: "ok", value: uuid }));
 });
 
 
