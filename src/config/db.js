@@ -10,8 +10,6 @@ async function ConnectDB(mongoURL) {
 
     } catch (err) {
         console.log(err)
-
-
     }
 }
 

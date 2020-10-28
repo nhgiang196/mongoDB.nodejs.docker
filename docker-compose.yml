@@ -30,7 +30,6 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: pass      
     networks:
       - common
-
   mongo-ui:
     restart: always
     image: mongo-express
