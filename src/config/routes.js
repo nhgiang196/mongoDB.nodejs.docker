@@ -1,5 +1,5 @@
 var express = require('express');
-var mongodb = require('./src/config/db');
+var mongodb = require('./db');
 
 var router = express.Router();
 
@@ -15,7 +15,7 @@ router.post('/values', function(req, res) {
 
   if (val === undefined || val === "") {
     res.send(JSON.stringify({status: "error", value: "Value undefined"}));
-    return
+    return 
   }
   mongodb.sendVal(val, res);
 });

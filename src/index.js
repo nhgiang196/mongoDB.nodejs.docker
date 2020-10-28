@@ -2,9 +2,8 @@ const express = require('express');
 const key = require('./config/main');
 const bodyParser = require('body-parser')
 const ConnectDB = require('./config/db')
-const User  = require('../models/user')
 const { port, mongoURL } = key;
-var routes = require('../routes');
+var routes = require('./config/routes');
 
 const app = express()
 
